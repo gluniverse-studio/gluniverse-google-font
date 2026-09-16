@@ -1,0 +1,60 @@
+<div class="glgf-body">
+<fieldset>
+  <legend>{{localize "GLGF.Manager.Fonts"}}</legend>
+  <p class="hint">{{{localize "GLGF.Manager.FontsHint"}}}</p>
+
+  <div class="glgf-add">
+    <input type="text" name="newFamily" placeholder="{{localize 'GLGF.Manager.AddPlaceholder'}}" autocomplete="off">
+    <button type="button" data-action="addFont">
+      <i class="fa-solid fa-plus"></i> {{localize "GLGF.Manager.Add"}}
+    </button>
+  </div>
+
+  <ol class="glgf-list">
+    {{#each families}}
+    <li data-family="{{this}}">
+      <span class="glgf-name">{{this}}</span>
+      <span class="glgf-preview" style="font-family: '{{this}}'">{{localize "GLGF.Manager.Preview"}}</span>
+      <button type="button" class="icon fa-solid fa-trash" data-action="removeFont"
+              data-tooltip="GLGF.Manager.Remove" aria-label="{{localize 'GLGF.Manager.Remove'}}"></button>
+    </li>
+    {{else}}
+    <li class="glgf-empty">{{localize "GLGF.Manager.Empty"}}</li>
+    {{/each}}
+  </ol>
+</fieldset>
+
+<fieldset>
+  <legend>{{localize "GLGF.Manager.Usage"}}</legend>
+  {{#each roles}}
+  <div class="form-group">
+    <label>{{localize label}}</label>
+    <div class="form-fields">
+      <select name="{{key}}">
+        {{selectOptions choices selected=value blank=(localize "GLGF.Manager.Default")}}
+      </select>
+    </div>
+    <p class="hint">{{localize hint}}</p>
+  </div>
+  {{/each}}
+  {{#unless diceSoNice}}
+  <p class="hint"><i class="fa-solid fa-circle-info"></i> {{localize "GLGF.Manager.NoDsn"}}</p>
+  {{/unless}}
+
+  <div class="form-group">
+    <label>{{localize "GLGF.ForceAll.Name"}}</label>
+    <div class="form-fields">
+      <input type="checkbox" name="forceAll" {{checked forceAll}}>
+    </div>
+    <p class="hint">{{localize "GLGF.ForceAll.Hint"}}</p>
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "GLGF.Subsets.Name"}}</label>
+    <div class="form-fields">
+      <input type="text" name="subsets" value="{{subsets}}">
+    </div>
+    <p class="hint">{{localize "GLGF.Subsets.Hint"}}</p>
+  </div>
+</fieldset>
+</div>

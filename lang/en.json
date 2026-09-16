@@ -1,0 +1,49 @@
+{
+  "GLGF": {
+    "Menu": {
+      "Name": "Google Fonts",
+      "Label": "Manage Google Fonts",
+      "Hint": "Pick Google Fonts and choose where Foundry uses them (interface, headings, canvas, dice)."
+    },
+    "Manager": {
+      "Title": "Google Fonts",
+      "Fonts": "Fonts",
+      "FontsHint": "Type a family name exactly as shown on <a href=\"https://fonts.google.com\" target=\"_blank\" rel=\"noopener\">fonts.google.com</a> (e.g. <em>Cinzel</em>, <em>Noto Sans Thai</em>) or paste a font page URL. Added fonts also appear in the text editor, drawings, and the Dice So Nice font list.",
+      "AddPlaceholder": "Font family or fonts.google.com URL",
+      "Add": "Add",
+      "Remove": "Remove font",
+      "Empty": "No fonts added yet.",
+      "Preview": "The quick brown fox jumps over the lazy dog 1234567890",
+      "Usage": "Where to use them",
+      "Default": "Foundry default",
+      "Save": "Save and reload",
+      "NoDsn": "Dice So Nice is not active, so the dice font setting has no effect."
+    },
+    "Roles": {
+      "Ui": "Interface font",
+      "UiHint": "Sidebar, windows, sheets, chat, and journal body text.",
+      "Heading": "Heading font",
+      "HeadingHint": "Journal and sheet headings.",
+      "Canvas": "Canvas font",
+      "CanvasHint": "Token nameplates, scrolling text, measurement labels, and the default for new drawings.",
+      "Dice": "Dice So Nice font",
+      "DiceHint": "Used on 3D dice for any player whose dice font is set to Auto. Players can also pick any added font in their Dice So Nice settings."
+    },
+    "ForceAll": {
+      "Name": "Force everywhere",
+      "Hint": "Override fonts set by game systems and other modules too (icons and code are left alone). Turn on if some text keeps its old font."
+    },
+    "Subsets": {
+      "Name": "Preloaded character sets",
+      "Hint": "Comma-separated Google subsets to load up front for canvas and dice text, e.g. latin, latin-ext, thai, cyrillic, greek, vietnamese."
+    },
+    "DisableUi": {
+      "Name": "Disable Google interface fonts on this device",
+      "Hint": "Keep Foundry's default interface fonts for you only. Canvas, dice, and editor fonts are unaffected."
+    },
+    "Notify": {
+      "Duplicate": "\"{family}\" is already in the list.",
+      "NotFound": "Could not find \"{family}\" on Google Fonts. Check the spelling and capitalization, and your internet connection."
+    }
+  }
+}

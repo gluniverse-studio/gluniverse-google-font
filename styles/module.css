@@ -1,0 +1,71 @@
+.glgf-manager .glgf-add {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.glgf-manager .glgf-add input {
+  flex: 1;
+}
+
+.glgf-manager .glgf-add button {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+.glgf-manager .glgf-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.glgf-manager .glgf-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--color-border, #7a7971);
+  border-radius: 4px;
+}
+
+.glgf-manager .glgf-name {
+  flex: 0 0 35%;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.glgf-manager .glgf-preview {
+  flex: 1;
+  font-size: 1.25em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.glgf-manager .glgf-list li.glgf-empty {
+  justify-content: center;
+  font-style: italic;
+  opacity: 0.7;
+}
+
+/* Fieldsets default to min-content width, so long nowrap previews would widen the window. */
+.glgf-manager fieldset,
+.glgf-manager .glgf-body {
+  min-width: 0;
+}
+
+.glgf-manager .glgf-add input,
+.glgf-manager .glgf-list li,
+.glgf-manager .glgf-name,
+.glgf-manager .glgf-preview {
+  min-width: 0;
+}
+
+.glgf-manager .glgf-list li > button {
+  flex: 0 0 auto;
+}

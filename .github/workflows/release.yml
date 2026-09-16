@@ -1,0 +1,95 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: Version bump
+        required: true
+        default: patch
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+      notes:
+        description: Release notes (optional)
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Compute next version
+        id: version
+        env:
+          BUMP: ${{ inputs.bump }}
+        run: |
+          current=$(jq -r '.version' module.json)
+          IFS=. read -r major minor patch <<< "${current%%-*}"
+          case "$BUMP" in
+            major) major=$((major + 1)); minor=0; patch=0 ;;
+            minor) minor=$((minor + 1)); patch=0 ;;
+            patch) patch=$((patch + 1)) ;;
+          esac
+          next="$major.$minor.$patch"
+          if git rev-parse "v$next" >/dev/null 2>&1; then
+            echo "::error::Tag v$next already exists"
+            exit 1
+          fi
+          echo "Bumping $current -> $next ($BUMP)"
+          echo "version=$next" >> "$GITHUB_OUTPUT"
+
+      - name: Update module.json
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+          REPO: ${{ github.server_url }}/${{ github.repository }}
+        run: |
+          jq --arg v "$VERSION" --arg repo "$REPO" '
+            .version = $v
+            | .url = $repo
+            | .manifest = "\($repo)/releases/latest/download/module.json"
+            | .download = "\($repo)/releases/download/v\($v)/module.zip"
+          ' module.json > module.json.tmp
+          mv module.json.tmp module.json
+          cat module.json
+
+      - name: Commit and tag
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add module.json
+          git commit -m "Release v$VERSION"
+          git tag "v$VERSION"
+          git push origin HEAD:main
+          git push origin "v$VERSION"
+
+      - name: Build module.zip
+        run: |
+          zip -r module.zip module.json README.md scripts styles templates lang
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.version.outputs.version }}
+          NOTES: ${{ inputs.notes }}
+        run: |
+          args=(--title "v$VERSION" --latest)
+          if [ -n "$NOTES" ]; then args+=(--notes "$NOTES"); else args+=(--generate-notes); fi
+          gh release create "v$VERSION" module.json module.zip "${args[@]}"
