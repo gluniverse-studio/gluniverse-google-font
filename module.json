@@ -2,7 +2,7 @@
   "id": "gluniverse-google-font",
   "title": "GLUniverse — Google Fonts",
   "description": "Use any Google Font in Foundry VTT: interface, headings, canvas text, the text editor, drawings, and Dice So Nice dice.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "compatibility": {
     "minimum": "14",
     "verified": "14"
@@ -36,7 +36,7 @@
   },
   "url": "https://github.com/gluniverse-studio/gluniverse-google-font",
   "manifest": "https://github.com/gluniverse-studio/gluniverse-google-font/releases/latest/download/module.json",
-  "download": "https://github.com/gluniverse-studio/gluniverse-google-font/releases/download/v1.0.0/module.zip",
+  "download": "https://github.com/gluniverse-studio/gluniverse-google-font/releases/download/v1.0.1/module.zip",
   "readme": "https://github.com/gluniverse-studio/gluniverse-google-font#readme",
   "bugs": "https://github.com/gluniverse-studio/gluniverse-google-font/issues"
 }
