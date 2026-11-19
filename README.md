@@ -1,8 +1,8 @@
 # GLUniverse — Google Fonts
 
 ![Foundry v14](https://img.shields.io/badge/Foundry-v14-informational)
-![Latest release](https://img.shields.io/github/v/release/patcharapon-j/gluniverse-google-font)
-![Downloads](https://img.shields.io/github/downloads/patcharapon-j/gluniverse-google-font/total)
+![Latest release](https://img.shields.io/github/v/release/gluniverse-studio/gluniverse-google-font)
+![Downloads](https://img.shields.io/github/downloads/gluniverse-studio/gluniverse-google-font/total)
 
 Use any [Google Font](https://fonts.google.com) in Foundry VTT v14: in the interface, headings, canvas text, the text editor, drawings, and **Dice So Nice** dice.
 
@@ -11,7 +11,7 @@ Use any [Google Font](https://fonts.google.com) in Foundry VTT v14: in the inter
 In Foundry, go to **Add-on Modules → Install Module**, paste this manifest URL into the **Manifest URL** field, and click **Install**:
 
 ```
-https://github.com/patcharapon-j/gluniverse-google-font/releases/latest/download/module.json
+https://github.com/gluniverse-studio/gluniverse-google-font/releases/latest/download/module.json
 ```
 
 Foundry uses the same link to check for updates.
